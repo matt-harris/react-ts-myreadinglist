@@ -9,7 +9,8 @@ import GlobalStyles from './styles/GlobalStyle';
 
 const Container = styled.div`
   max-width: 44rem;
-  margin: 1.5rem auto;
+  margin-right: auto;
+  margin-left: auto;
   padding-right: 1rem;
   padding-left: 1rem;
 `;
@@ -20,12 +21,12 @@ function App() {
       <GlobalStyles />
       <div className='App'>
         <ListContextProvider>
+          <Header />
           <Container>
-            <Header />
             <List />
             <ListForm />
-            <Footer />
           </Container>
+          <Footer />
         </ListContextProvider>
       </div>
     </>
