@@ -3,15 +3,17 @@ import { ListContext } from '../contexts/ListContext';
 import styled from 'styled-components';
 
 const Item = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 1rem 0;
   padding: 1rem;
-  background-color: #e3dccf;
-  cursor: pointer;
+  background-color: #fefcf8;
+`;
 
-  &:hover {
-    opacity: 0.3;
-    text-decoration: line-through;
-  }
+const ItemDetails = styled.div`
+  flex: 1;
+  order: 1;
 `;
 
 const Title = styled.h2`
@@ -21,6 +23,17 @@ const Title = styled.h2`
 
 const Link = styled.a`
   text-decoration: none;
+`;
+
+const ItemAction = styled.div`
+  order: 2;  
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &:hover ~ ${ItemDetails} {
+      text-decoration: line-through;
+    }
+  }
 `;
 
 const ListItem = (props: {
@@ -34,9 +47,13 @@ const ListItem = (props: {
   const { dispatch } = useContext(ListContext);
 
   return (
-    <Item onClick={() => dispatch({ type: 'REMOVE_ITEM', id: item.id })}>
-      <Title>{item.title}</Title>
-      <Link>{item.link}</Link>
+    <Item>
+      <ItemAction onClick={() => dispatch({ type: 'REMOVE_ITEM', id: item.id })}>X</ItemAction>
+
+      <ItemDetails>
+        <Title>{item.title}</Title>
+        <Link>{item.link}</Link>
+      </ItemDetails>
     </Item>
   );
 };
