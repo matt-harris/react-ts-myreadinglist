@@ -11,7 +11,7 @@ const TextInput = styled.input`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   padding: 0.75rem;
-  background-color: #e3dccf;
+  background-color: #fefcf8;
   border: 0;
 `;
 
@@ -21,6 +21,7 @@ const Submit = styled.input`
   padding: 0.5rem 1rem;
   background-color: #e3dccf;
   border: 0;
+  cursor: pointer;
 `;
 
 const ListForm = () => {
