@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ListContextProvider from './contexts/ListContext';
+import Header from './components/Header';
+import List from './components/List';
+import ListForm from './components/ListForm';
+import Footer from './components/Footer';
+import styled from 'styled-components';
+import GlobalStyles from './styles/GlobalStyle';
+
+const Container = styled.div`
+  max-width: 44rem;
+  margin: 1.5rem auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <div className='App'>
+        <ListContextProvider>
+          <Container>
+            <Header />
+            <List />
+            <ListForm />
+            <Footer />
+          </Container>
+        </ListContextProvider>
+      </div>
+    </>
   );
 }
 
