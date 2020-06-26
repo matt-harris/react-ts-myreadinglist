@@ -5,7 +5,6 @@ import { ListContext } from '../contexts/ListContext';
 const Navbar = styled.header`
   padding: 1rem 1.5rem;
   text-align: center;
-  background-color: #e3dccf;
 `;
 
 const Logo = styled.h1`
