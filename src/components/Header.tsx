@@ -12,12 +12,13 @@ const Logo = styled.h1`
 `;
 
 const Header = () => {
-  const { list } = useContext(ListContext);
+  const { state } = useContext(ListContext);
+  const { list } = state;
 
   return (
     <Navbar>
       <Logo>Reading List</Logo>
-      <p>Currently you have {list.length} items to read.</p>
+      <p>Currently you have {list?.length} items to read.</p>
     </Navbar>
   );
 };

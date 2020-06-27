@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import ListItem from './ListItem';
-import { ListContext } from '../contexts/ListContext';
+import { ListContext, IListItem } from '../contexts/ListContext';
 import styled from 'styled-components';
 
 const ReadingList = styled.div`
@@ -13,11 +13,12 @@ const EmptyList = styled.div`
 `;
 
 const List = () => {
-  const { list } = useContext(ListContext);
+  const { state } = useContext(ListContext);
+  const { list } = state;
 
-  return list.length ? (
+  return list?.length ? (
     <ReadingList>
-      {list.map((item: { title: string; link: string; id: string }) => (
+      {list.map((item: IListItem) => (
         <ListItem item={item} key={item.id} />
       ))}
     </ReadingList>

@@ -1,24 +1,34 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import { ListReducer } from '../reducers/ListReducer';
 
-// export interface IListItem {
-//   title: string;
-//   link: string;
-//   id: string;
-//   dispatch: any;
-// }
+export interface IList {
+  list: IListItem[];
+}
 
-export const ListContext = createContext<any>([]);
+export interface IListItem {
+  title: string;
+  link: string;
+  id: string;
+}
+
+const initialState = {
+  list: [],
+};
+
+export const ListContext = createContext<{
+  state: IList;
+  dispatch: React.Dispatch<any>;
+}>({ state: initialState, dispatch: () => null });
 
 const ListContextProvider = (props: { children?: React.ReactNode }) => {
-  const [list, dispatch] = useReducer(ListReducer, [], () => {
+  const [state, dispatch] = useReducer(ListReducer, [], () => {
     const localData = localStorage.getItem('myReadingList');
     return localData ? JSON.parse(localData) : [];
   });
 
-  useEffect(() => localStorage.setItem('myReadingList', JSON.stringify(list)), [list]);
+  useEffect(() => localStorage.setItem('myReadingList', JSON.stringify(state.list)), [state.list]);
 
-  return <ListContext.Provider value={{ list, dispatch }}>{props.children}</ListContext.Provider>;
+  return <ListContext.Provider value={{ state, dispatch }}>{props.children}</ListContext.Provider>;
 };
 
 export default ListContextProvider;
