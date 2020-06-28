@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ListContext } from '../contexts/ListContext';
+import { ListContext, IListItem } from '../contexts/ListContext';
 import styled from 'styled-components';
 
 const Item = styled.div`
@@ -36,13 +36,7 @@ const ItemAction = styled.div`
   }
 `;
 
-const ListItem = (props: {
-  item: {
-    title: string;
-    link: string;
-    id: string;
-  };
-}) => {
+const ListItem = (props: { item: IListItem }) => {
   const { item } = props;
   const { dispatch } = useContext(ListContext);
 
