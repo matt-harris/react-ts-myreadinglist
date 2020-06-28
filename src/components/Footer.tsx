@@ -5,8 +5,19 @@ const FooterBar = styled.footer`
   padding: 1rem 1.5rem;
   text-align: center;
   background-color: #e3dccf;
+
+  a {
+    color: inherit;
+  }
 `;
 
-const Footer = () => <FooterBar>This is the footer blah blah blah.</FooterBar>;
+const Footer = () => (
+  <FooterBar>
+    Made by{' '}
+    <a href='https://twitter.com/matty_h' rel='noopener noreferrer' target='_blank'>
+      @matty_h
+    </a>
+  </FooterBar>
+);
 
 export default Footer;
