@@ -8,16 +8,35 @@ const Navbar = styled.header`
 `;
 
 const Logo = styled.h1`
-  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 2rem;
+    border-top: #e3dccf 0.25rem solid;
+  }
+
+  &:before {
+    margin-right: 0.5rem;
+  }
+
+  &:after {
+    margin-left: 0.5rem;
+  }
 `;
 
 const Header = () => {
-  const { state } = useContext(ListContext);
-  const { list } = state;
+  const { list } = useContext(ListContext);
 
   return (
     <Navbar>
-      <Logo>Reading List</Logo>
+      <Logo>MyReadingList</Logo>
       <p>Currently you have {list?.length} items to read.</p>
     </Navbar>
   );
