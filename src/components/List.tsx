@@ -13,10 +13,9 @@ const EmptyList = styled.div`
 `;
 
 const List = () => {
-  const { state } = useContext(ListContext);
-  const { list } = state;
+  const { list } = useContext(ListContext);
 
-  return list?.length ? (
+  return list.length ? (
     <ReadingList>
       {list.map((item: IListItem) => (
         <ListItem item={item} key={item.id} />
