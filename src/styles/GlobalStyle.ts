@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: #191817;
     background-color: #fdf5e6;
-    font-family: 'Proza Libre', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
