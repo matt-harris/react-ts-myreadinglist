@@ -28,17 +28,16 @@ function App() {
 
   return (
     <>
-      <GlobalStyles />
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <GlobalStyles />
         <div className='App'>
           <ListContextProvider>
-            {/* <Button label='Toggle Dark mode' onClick={handleTheme} /> */}
             <Container>
               <Header isDarkMode={isDarkMode} onClick={handleTheme} />
               <List />
-              <ListForm />
+              <ListForm title='Add a new item!' />
+              <Footer />
             </Container>
-            <Footer />
           </ListContextProvider>
         </div>
       </ThemeProvider>
