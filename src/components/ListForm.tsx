@@ -11,20 +11,26 @@ const TextInput = styled.input`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   padding: 0.75rem;
-  background-color: #fefcf8;
+  color: ${(props) => props.theme.baseUI};
+  font-family: inherit;
+  background-color: ${(props) => props.theme.secondary};
   border: 0;
+
+  ::placeholder {
+    color: ${(props) => props.theme.baseUI};
+  }
 `;
 
 const Submit = styled.input`
   display: block;
   margin: 0.5rem auto;
   padding: 0.5rem 1rem;
-  background-color: #e3dccf;
+  background-color: ${(props) => props.theme.highlight};
   border: 0;
   cursor: pointer;
 `;
 
-const ListForm = () => {
+const ListForm = (props: { title: string }) => {
   const { dispatch } = useContext(ListContext);
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
@@ -38,21 +44,22 @@ const ListForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <h3>{props.title}</h3>
       <TextInput
         type='text'
         value={title}
         onChange={(e: SyntheticEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)}
-        placeholder='Enter item title'
+        placeholder='Enter the item title'
         required
       />
       <TextInput
         type='text'
         value={link}
         onChange={(e: SyntheticEvent<HTMLInputElement>) => setLink(e.currentTarget.value)}
-        placeholder='Enter item link'
+        placeholder='Enter the item link'
         required
       />
-      <Submit type='submit' value='Add new item' />
+      <Submit type='submit' value='Add item' />
     </Form>
   );
 };
