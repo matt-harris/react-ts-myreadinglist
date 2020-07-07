@@ -9,7 +9,8 @@ const HeaderWrap = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
 `;
 
 const LogoWrap = styled.div`
@@ -20,7 +21,7 @@ const LogoWrap = styled.div`
 `;
 
 const LogoIcon = styled(ReadmeLogoSVG)`
-  fill: #000;
+  stroke: ${(props) => props.theme.baseUI};
   width: 2rem;
   height: 2rem;
   margin-right: 0.25rem;
@@ -36,7 +37,7 @@ const LogoText = styled.h1`
 `;
 
 const SunIcon = styled(SunSVG)`
-  fill: #000;
+  fill: ${(props) => props.theme.baseUI};
   width: 2rem;
   height: 2rem;
   backface-visibility: hidden;
@@ -46,7 +47,7 @@ const SunIcon = styled(SunSVG)`
 `;
 
 const MoonIcon = styled(MoonSVG)`
-  fill: #000;
+  fill: ${(props) => props.theme.baseUI};
   width: 2rem;
   height: 2rem;
   backface-visibility: hidden;
