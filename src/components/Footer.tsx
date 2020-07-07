@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const FooterBar = styled.footer`
   padding: 1rem 1.5rem;
   text-align: center;
-  background-color: #e3dccf;
 
   a {
     color: inherit;
