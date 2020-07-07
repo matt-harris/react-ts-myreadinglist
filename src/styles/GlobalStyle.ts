@@ -39,8 +39,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    color: #191817;
-    background-color: #fdf5e6;
+    color: ${(props) => props.theme.baseUI};
+    background-color: ${(props) => props.theme.primary};
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
