@@ -14,6 +14,12 @@ export const ListReducer = (state: any, action: any) => {
       ];
     case 'REMOVE_ITEM':
       return state.filter((item: any) => item.id !== action.id);
+    case 'REORDER_ITEM':
+      const newItems = [...state];
+      const item = newItems[action.item.source.index];
+      newItems.splice(action.item.source.index, 1);
+      newItems.splice(action.item.destination.index, 0, item);
+      return newItems;
     default:
       return state;
   }

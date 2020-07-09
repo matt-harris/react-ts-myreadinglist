@@ -17,9 +17,16 @@ const EmptyList = styled.div`
 `;
 
 const List = () => {
-  const { list } = useContext(ListContext);
+  const { list, dispatch } = useContext(ListContext);
   const onDragEnd = (result: any) => {
-    // TODO: reorder list
+    const { destination, source, draggableId } = result;
+
+    if (!destination) return;
+
+    if (destination.draggableId === source.draggableId && destination.index === source.index)
+      return;
+
+    dispatch({ type: 'REORDER_ITEM', item: { destination, source, draggableId } });
   };
 
   return list.length ? (

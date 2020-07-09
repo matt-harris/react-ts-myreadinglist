@@ -7,7 +7,7 @@ const Item = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   padding: 1rem;
   background-color: ${(props) => props.theme.secondary};
 `;
