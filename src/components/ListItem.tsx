@@ -1,15 +1,23 @@
 import React, { useContext } from 'react';
 import { ListContext, IListItem } from '../contexts/ListContext';
 import { Draggable } from 'react-beautiful-dnd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Item = styled.div`
+const Item = styled.div.attrs((props: { ['data-is-dragging']: boolean }) => ({
+  isDragging: props['data-is-dragging'],
+}))`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: ${(props) => props.theme.secondary};
+  background-color: ${(props) => (props.isDragging ? props.theme.alt : props.theme.secondary)};
+  ${(props) =>
+    props.isDragging &&
+    css`
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0px 0px 4px 0px ${props.theme.baseUI};
+    `}
 `;
 
 const ItemDetails = styled.div`
@@ -45,8 +53,13 @@ const ListItem = (props: { item: IListItem; index: number }) => {
 
   return (
     <Draggable draggableId={item.id} index={index}>
-      {(provided) => (
-        <Item {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+      {(provided, snapshot) => (
+        <Item
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          data-is-dragging={snapshot.isDragging}
+        >
           <ItemAction onClick={() => dispatch({ type: 'REMOVE_ITEM', id: item.id })}>X</ItemAction>
 
           <ItemDetails>
