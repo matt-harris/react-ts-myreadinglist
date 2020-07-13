@@ -18,22 +18,22 @@ const Container = styled.div`
 `;
 
 function App() {
-  const storedTheme = localStorage.getItem('isDarkMode');
-  const initialThemeState: boolean = storedTheme === 'true' ? true : false;
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(initialThemeState);
+  const savedTheme = localStorage.getItem('readmeTheme');
+  const initialThemeState: boolean = savedTheme === 'true' ? true : false;
+  const [readmeTheme, setReadmeTheme] = useState<boolean>(initialThemeState);
   const handleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('isDarkMode', JSON.stringify(!isDarkMode));
+    setReadmeTheme(!readmeTheme);
+    localStorage.setItem('readmeTheme', JSON.stringify(!readmeTheme));
   };
 
   return (
     <>
-      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <ThemeProvider theme={readmeTheme ? darkTheme : lightTheme}>
         <GlobalStyles />
         <div className='App'>
           <ListContextProvider>
             <Container>
-              <Header isDarkMode={isDarkMode} onClick={handleTheme} />
+              <Header isDarkMode={readmeTheme} onClick={handleTheme} />
               <List />
               <ListForm title='Add a new item!' />
               <Footer />
