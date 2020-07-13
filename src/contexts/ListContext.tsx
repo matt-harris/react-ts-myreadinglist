@@ -16,11 +16,11 @@ export const ListContext = createContext<IListContext>({ list: [], dispatch: () 
 
 const ListContextProvider = (props: { children: ReactNode }) => {
   const [list, dispatch] = useReducer(ListReducer, [], () => {
-    const localData = localStorage.getItem('myReadingList');
+    const localData = localStorage.getItem('readmeList');
     return localData ? JSON.parse(localData) : [];
   });
 
-  useEffect(() => localStorage.setItem('myReadingList', JSON.stringify(list)), [list]);
+  useEffect(() => localStorage.setItem('readmeList', JSON.stringify(list)), [list]);
 
   return <ListContext.Provider value={{ list, dispatch }}>{props.children}</ListContext.Provider>;
 };
