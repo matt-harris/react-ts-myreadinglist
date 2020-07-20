@@ -43,7 +43,7 @@ const List = () => {
       </Droppable>
     </DragDropContext>
   ) : (
-    <EmptyList>Nothing to read! Hello free time!</EmptyList>
+    <EmptyList>Nothing to read!</EmptyList>
   );
 };
 
