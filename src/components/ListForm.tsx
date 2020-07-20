@@ -25,6 +25,7 @@ const Submit = styled.input`
   display: block;
   margin: 0.5rem auto;
   padding: 0.5rem 1rem;
+  font-family: inherit;
   background-color: ${(props) => props.theme.highlight};
   border: 0;
   cursor: pointer;
