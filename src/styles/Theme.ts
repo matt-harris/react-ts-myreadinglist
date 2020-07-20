@@ -6,6 +6,8 @@ export const lightTheme: DefaultTheme = {
   alt: '#e5e9f0',
   baseUI: '#434c5e',
   highlight: '#81a1c1',
+  modalOverlay: '#434c5e',
+  modalBox: '#d8dee9',
 };
 
 export const darkTheme: DefaultTheme = {
@@ -14,4 +16,6 @@ export const darkTheme: DefaultTheme = {
   alt: '#434c5e',
   baseUI: '#e5e9f0',
   highlight: '#A3be8c',
+  modalOverlay: '#4c566a',
+  modalBox: '#3b4252',
 };

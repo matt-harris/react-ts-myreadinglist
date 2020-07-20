@@ -7,5 +7,7 @@ declare module 'styled-components' {
     alt: string;
     baseUI: string;
     highlight: string;
+    modalOverlay: string;
+    modalBox: string;
   }
 }
