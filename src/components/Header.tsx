@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ReactComponent as ReadmeLogoSVG } from '../assets/logo.svg';
+import { ReactComponent as InfoSVG } from '../assets/info.svg';
 import { ReactComponent as SunSVG } from '../assets/sun.svg';
 import { ReactComponent as MoonSVG } from '../assets/moon.svg';
 import styled from 'styled-components';
 import { ListContext } from '../contexts/ListContext';
+
+import Modal from './Modal';
 
 const HeaderWrap = styled.header`
   display: flex;
@@ -36,6 +39,21 @@ const LogoText = styled.h1`
   text-transform: uppercase;
 `;
 
+const HeaderIcons = styled.div`
+  display: flex;
+`;
+
+const InfoIcon = styled(InfoSVG)`
+  stroke: ${(props) => props.theme.baseUI};
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  backface-visibility: hidden;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+`;
+
 const SunIcon = styled(SunSVG)`
   fill: ${(props) => props.theme.baseUI};
   width: 2rem;
@@ -64,6 +82,12 @@ const HeaderMessage = styled.h3`
 const Header = (props: { isDarkMode: boolean; onClick: () => void }) => {
   const { list } = useContext(ListContext);
 
+  /**
+   * Modal
+   */
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const toggleModal = () => setShowModal(!showModal);
+
   return (
     <>
       <HeaderWrap>
@@ -72,11 +96,19 @@ const Header = (props: { isDarkMode: boolean; onClick: () => void }) => {
           <LogoText>Readme</LogoText>
         </LogoWrap>
 
-        {props.isDarkMode ? (
-          <SunIcon onClick={props.onClick} />
-        ) : (
-          <MoonIcon onClick={props.onClick} />
-        )}
+        <Modal title='Modal title' showModal={showModal} closeModal={toggleModal}>
+          This is the Modal content.
+        </Modal>
+
+        <HeaderIcons>
+          <InfoIcon onClick={toggleModal} />
+
+          {props.isDarkMode ? (
+            <SunIcon onClick={props.onClick} />
+          ) : (
+            <MoonIcon onClick={props.onClick} />
+          )}
+        </HeaderIcons>
       </HeaderWrap>
 
       <HeaderMessage>Currently you have {list?.length} items to read.</HeaderMessage>
