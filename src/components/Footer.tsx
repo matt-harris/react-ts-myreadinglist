@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterBar = styled.footer`
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   text-align: center;
 
   a {
