@@ -20,6 +20,21 @@ const Item = styled.div.attrs((props: { ['data-is-dragging']: boolean }) => ({
     `}
 `;
 
+const ItemDrag = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+`;
+
+const DragIcon = styled(dragSVG)`
+  fill: ${(props) => props.theme.baseUI};
+  width: 1.375rem;
+  height: 1.375rem;
+  backface-visibility: hidden;
+  overflow: hidden;
+  vertical-align: middle;
+`;
 const ItemDetails = styled.div`
   flex: 1;
   order: 1;
@@ -60,6 +75,9 @@ const ListItem = (props: { item: IListItem; index: number }) => {
           ref={provided.innerRef}
           data-is-dragging={snapshot.isDragging}
         >
+          <ItemDrag {...provided.dragHandleProps}>
+            <DragIcon />
+          </ItemDrag>
           <ItemAction onClick={() => dispatch({ type: 'REMOVE_ITEM', id: item.id })}>X</ItemAction>
 
           <ItemDetails>
