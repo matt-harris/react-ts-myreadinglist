@@ -39,11 +39,19 @@ const ModalBox = styled.div`
 
 const ModalTitle = styled.div`
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 900;
 `;
 
 const ModalContent = styled.div`
   margin-top: 1.5rem;
+
+  p {
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const ModalClose = styled.div`
