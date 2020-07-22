@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
 import { ListContext, IListItem } from '../contexts/ListContext';
 import { Draggable } from 'react-beautiful-dnd';
+import { ReactComponent as dragSVG } from '../assets/drag.svg';
 import styled, { css } from 'styled-components';
 
 const Item = styled.div.attrs((props: { ['data-is-dragging']: boolean }) => ({
   isDragging: props['data-is-dragging'],
 }))`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  padding: 1rem;
   background-color: ${(props) => (props.isDragging ? props.theme.alt : props.theme.secondary)};
   ${(props) =>
     props.isDragging &&
@@ -35,23 +34,33 @@ const DragIcon = styled(dragSVG)`
   overflow: hidden;
   vertical-align: middle;
 `;
+
 const ItemDetails = styled.div`
   flex: 1;
   order: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `;
 
 const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
 `;
 
 const Link = styled.a`
+  display: flex;
+  flex-direction: column;
+  color: inherit;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const ItemAction = styled.div`
   order: 2;  
-  padding: 0.5rem;
+  padding: 1rem;
   font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
@@ -71,7 +80,6 @@ const ListItem = (props: { item: IListItem; index: number }) => {
       {(provided, snapshot) => (
         <Item
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
           ref={provided.innerRef}
           data-is-dragging={snapshot.isDragging}
         >
@@ -81,8 +89,10 @@ const ListItem = (props: { item: IListItem; index: number }) => {
           <ItemAction onClick={() => dispatch({ type: 'REMOVE_ITEM', id: item.id })}>X</ItemAction>
 
           <ItemDetails>
-            <Title>{item.title}</Title>
-            <Link>{item.link}</Link>
+            <Link href={item.link} target='_blank'>
+              <Title>{item.title}</Title>
+              {item.link}
+            </Link>
           </ItemDetails>
         </Item>
       )}
