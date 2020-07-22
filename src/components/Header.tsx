@@ -127,7 +127,9 @@ const Header = (props: { isDarkMode: boolean; onClick: () => void }) => {
         </HeaderIcons>
       </HeaderWrap>
 
-      <HeaderMessage>Currently you have {list?.length} items to read.</HeaderMessage>
+      <HeaderMessage>
+        Currently you have {list?.length} {list?.length !== 1 ? 'items' : 'item'} to read.
+      </HeaderMessage>
     </>
   );
 };
