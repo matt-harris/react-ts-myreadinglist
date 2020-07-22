@@ -50,14 +50,14 @@ const ListForm = (props: { title: string }) => {
         type='text'
         value={title}
         onChange={(e: SyntheticEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)}
-        placeholder='Enter the item title'
+        placeholder='Item title'
         required
       />
       <TextInput
-        type='text'
+        type='url'
         value={link}
         onChange={(e: SyntheticEvent<HTMLInputElement>) => setLink(e.currentTarget.value)}
-        placeholder='Enter the item link'
+        placeholder='Item link e.g. https://www.bbc.co.uk'
         required
       />
       <Submit type='submit' value='Add item' />
