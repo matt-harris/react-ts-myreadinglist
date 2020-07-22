@@ -89,7 +89,7 @@ const ListItem = (props: { item: IListItem; index: number }) => {
           <ItemAction onClick={() => dispatch({ type: 'REMOVE_ITEM', id: item.id })}>X</ItemAction>
 
           <ItemDetails>
-            <Link href={item.link} target='_blank'>
+            <Link href={item.link} rel='noopener noreferrer' target='_blank'>
               <Title>{item.title}</Title>
               {item.link}
             </Link>
