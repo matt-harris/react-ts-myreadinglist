@@ -96,7 +96,7 @@ const Header = (props: { isDarkMode: boolean; onClick: () => void }) => {
           <LogoText>Readme</LogoText>
         </LogoWrap>
 
-        <Modal title='README' showModal={showModal} closeModal={toggleModal}>
+        <Modal title='Readme' showModal={showModal} closeModal={toggleModal}>
           <p>
             Readme is a simple list that holds the pages that you haven't read yet, but you would
             like to at some point in the future.

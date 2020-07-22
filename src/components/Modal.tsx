@@ -40,6 +40,7 @@ const ModalBox = styled.div`
 const ModalTitle = styled.div`
   font-size: 1.5rem;
   font-weight: 900;
+  text-transform: uppercase;
 `;
 
 const ModalContent = styled.div`
