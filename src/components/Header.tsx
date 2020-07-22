@@ -103,7 +103,7 @@ const Header = (props: { isDarkMode: boolean; onClick: () => void }) => {
           </p>
           <p>
             Your Readme list is stored in your browser's localStorage, so you won't lose your items,
-            just visit www.linkwillgohere.com to see your Readme list.
+            just visit https://readme-app.netlify.app to see your Readme list.
           </p>
           <p>
             Reorder your items by simply dragging and dropping them into the correct place. Once you
