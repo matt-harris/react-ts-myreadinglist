@@ -43,7 +43,7 @@ const List = () => {
       </Droppable>
     </DragDropContext>
   ) : (
-    <EmptyList>Nothing to read!</EmptyList>
+    <EmptyList>Nothing to read! Add items to your Readme list!</EmptyList>
   );
 };
 
