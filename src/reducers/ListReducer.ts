@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-// import { IListItem } from '../contexts/ListContext';
+import { IListItem } from '../contexts/ListContext';
 
-export const ListReducer = (state: any, action: any) => {
+export const ListReducer = (state: IListItem[], action: any) => {
   switch (action.type) {
     case 'ADD_ITEM':
       return [
