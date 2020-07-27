@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { ListContext } from '../contexts/ListContext';
+import Modal from './Modal';
 import { ReactComponent as ReadmeLogoSVG } from '../assets/logo.svg';
 import { ReactComponent as InfoSVG } from '../assets/info.svg';
 import { ReactComponent as SunSVG } from '../assets/sun.svg';
 import { ReactComponent as MoonSVG } from '../assets/moon.svg';
 import styled from 'styled-components';
-import { ListContext } from '../contexts/ListContext';
-
-import Modal from './Modal';
 
 const HeaderWrap = styled.header`
   display: flex;
@@ -81,10 +80,6 @@ const HeaderMessage = styled.h3`
 
 const Header = (props: { isDarkMode: boolean; onClick: () => void }) => {
   const { list } = useContext(ListContext);
-
-  /**
-   * Modal
-   */
   const [showModal, setShowModal] = useState<boolean>(false);
   const toggleModal = () => setShowModal(!showModal);
 
